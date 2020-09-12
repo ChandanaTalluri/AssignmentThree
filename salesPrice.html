@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="styles/main.css" type="text/css" />
+
+</head>
+
+<body style="background-color:lightblue;">
+
+  <br>
+  <marquee behavior="scroll" direction="right" scrollamount="10">
+    <b>
+      Student ID -0809379 Assignment Three
+    </b>
+  </marquee>
+
+
+  <div class="container">
+    <br><br><br><br><br><br><br>
+    <div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <div class>
+            <label>Sales Amount</label>
+            <input type="number" required id="salesAmount" class="form-control" placeholder="Enter the sales amount">
+          </div>
+          <div>
+            <label>Sales Tax Percentage</label>
+            <input type="number" required class="form-control" id="taxPercentage"
+              placeholder="Enter the sales tax percentage">
+          </div>
+          <p>Example: 10,10.5,20. Percentage(%) sign is not required</p>
+          <button type="submit" class="btn btn-primary" onclick="calculatePrice()">Calculate Price</button>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <form>
+            <button type="submit" class="btn btn-primary" onclick="clearData()">Clear</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="results">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <p id="resultval"></p>
+          </div>
+
+        </div>
+      </div>
+
+      <br><br><br><br><br><br><br>
+    </div>
+    <script type="text/javaScript">
+    let salesAmount='';
+    let tax='';
+    
+
+    
+   $(document).ready(function(){
+    $('#results').hide();
+    });
+    
+    function calculatePrice (){
+        salesAmount = $('#salesAmount').val(); 
+        tax = $('#taxPercentage').val();
+        if(salesAmount==''){
+        alert("Please enter the approriate values")
+       }
+        let taxpercentage = (tax/100);
+        let taxAmount= taxpercentage*salesAmount;
+       let  finalPrice = Number(salesAmount)+Number(taxAmount);
+        $("#resultval").text("The Final Sales Price is :"+finalPrice);
+        console.log("final Price"+finalPrice);
+       if(!salesAmount==''){
+        $("#results").fadeIn("slow");
+        $("#resultval").fadeIn();
+       }
+       
+       
+
+    }
+    function clearData() {
+        $('#salesAmount').val('');
+       $('#taxPercentage').val('');
+       $('#results').fadeOut();
+    }
+  </script>
+</body>
+
+</html>
